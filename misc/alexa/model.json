@@ -1,0 +1,353 @@
+{
+  "intents": [
+    {
+      "name": "AMAZON.CancelIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.HelpIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.StopIntent",
+      "samples": []
+    },
+    {
+      "name": "CoveoSearchIntent",
+      "samples": [
+        "for {query}",
+        "about {query}",
+        "how to {query}",
+        "tell me about {query}",
+        "search for {query}",
+        "look for {query}"
+      ],
+      "slots": [
+        {
+          "name": "query",
+          "type": "SEARCHTERMS",
+          "samples": []
+        }
+      ]
+    },
+    {
+      "name": "GetSources",
+      "samples": [
+        "what are the sources",
+        "what are the sources for {query}"
+      ],
+      "slots": [
+        {
+          "name": "query",
+          "type": "SEARCHTERMS",
+          "samples": [
+            "{query}",
+            "I'm looking for {query}",
+            "I want {query}",
+            "I want to know {query}"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GetSummary",
+      "samples": [
+        "Give me the summary for {query} ",
+        "What is the summary for the first result of {query}",
+        "What is the summary",
+        "get me the summary",
+        "get me the summary for {query}"
+      ],
+      "slots": [
+        {
+          "name": "query",
+          "type": "SEARCHTERMS",
+          "samples": [
+            "{query}",
+            "I want to know about {query}",
+            "I'm looking for {query}"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GetTopFromSource",
+      "samples": [
+        "what is the top result in {source}",
+        "what is the top result for {source}",
+        "get the top result for {source}",
+        "find the top result for {source}",
+        "get the top results in {source}"
+      ],
+      "slots": [
+        {
+          "name": "query",
+          "type": "SEARCHTERMS",
+          "samples": [
+            "{query}",
+            "I'm looking for {query}"
+          ]
+        },
+        {
+          "name": "source",
+          "type": "SOURCE",
+          "samples": [
+            "{source}",
+            "From source {source}",
+            "From {source}",
+            "in {source}"
+          ]
+        }
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "SEARCHTERMS",
+      "values": [
+        {
+          "name": {
+            "value": "javascript framework"
+          }
+        },
+        {
+          "name": {
+            "value": "connector guru"
+          }
+        },
+        {
+          "name": {
+            "value": "sitecore"
+          }
+        },
+        {
+          "name": {
+            "value": "install coveo for sitecore"
+          }
+        },
+        {
+          "name": {
+            "value": "sharepoint"
+          }
+        },
+        {
+          "name": {
+            "value": "coveo cloud security"
+          }
+        },
+        {
+          "name": {
+            "value": "list of connectors"
+          }
+        },
+        {
+          "name": {
+            "value": "search UI"
+          }
+        },
+        {
+          "name": {
+            "value": "Jive connector"
+          }
+        },
+        {
+          "name": {
+            "value": "leadership team"
+          }
+        },
+        {
+          "name": {
+            "value": "salesforce"
+          }
+        },
+        {
+          "name": {
+            "value": "early binding"
+          }
+        },
+        {
+          "name": {
+            "value": "lithium"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SOURCE",
+      "values": [
+        {
+          "name": {
+            "value": "Developers"
+          }
+        },
+        {
+          "name": {
+            "value": "Online Help"
+          }
+        },
+        {
+          "name": {
+            "value": "Search UI Github"
+          }
+        },
+        {
+          "name": {
+            "value": "Tech News"
+          }
+        },
+        {
+          "name": {
+            "value": "US News"
+          }
+        }
+      ]
+    }
+  ],
+  "prompts": [
+    {
+      "id": "Elicit.Intent-CoveoSearchIntent.IntentSlot-query",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "What are you looking for again ?"
+        }
+      ]
+    },
+    {
+      "id": "Elicit.Intent-GetSources.IntentSlot-query",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "What are you looking for?"
+        },
+        {
+          "type": "PlainText",
+          "value": "What is your query?"
+        },
+        {
+          "type": "PlainText",
+          "value": "What do you seek?"
+        }
+      ]
+    },
+    {
+      "id": "Elicit.Intent-GetSummary.IntentSlot-query",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "Can you tell me are you looking for?"
+        }
+      ]
+    },
+    {
+      "id": "Elicit.Intent-GetTopFromSource.IntentSlot-query",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "What is your query?"
+        },
+        {
+          "type": "PlainText",
+          "value": "What are you looking for?"
+        }
+      ]
+    },
+    {
+      "id": "Elicit.Intent-GetTopFromSource.IntentSlot-source",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "Which source do you want?"
+        }
+      ]
+    }
+  ],
+  "dialog": {
+    "version": "1.0",
+    "intents": [
+      {
+        "name": "CoveoSearchIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "query",
+            "type": "SEARCHTERMS",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicit": "Elicit.Intent-CoveoSearchIntent.IntentSlot-query"
+            }
+          }
+        ]
+      },
+      {
+        "name": "GetSources",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "query",
+            "type": "SEARCHTERMS",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicit": "Elicit.Intent-GetSources.IntentSlot-query"
+            }
+          }
+        ]
+      },
+      {
+        "name": "GetSummary",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "query",
+            "type": "SEARCHTERMS",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicit": "Elicit.Intent-GetSummary.IntentSlot-query"
+            }
+          }
+        ]
+      },
+      {
+        "name": "GetTopFromSource",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "query",
+            "type": "SEARCHTERMS",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicit": "Elicit.Intent-GetTopFromSource.IntentSlot-query"
+            }
+          },
+          {
+            "name": "source",
+            "type": "SOURCE",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicit": "Elicit.Intent-GetTopFromSource.IntentSlot-source"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
